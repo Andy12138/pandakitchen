@@ -1,0 +1,48 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'com.zmg'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+
+repositories {
+    // 远程仓库，有先后顺序
+    maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter'
+    // pdfbox openhtmltopdf
+    compile 'com.openhtmltopdf:openhtmltopdf-core:1.0.0'
+    compile 'com.openhtmltopdf:openhtmltopdf-pdfbox:1.0.0'
+    // fastjson
+    compile 'com.alibaba:fastjson:1.2.68'
+    // jackson
+    compile 'com.fasterxml.jackson.core:jackson-core:2.9.8'
+    // pdf
+    compile 'com.itextpdf:itextpdf:5.5.13'
+    compile 'com.itextpdf:itext-asian:5.2.0'
+    // 二维码
+    compile 'com.google.zxing:core:3.3.0'
+    compile 'com.google.zxing:javase:3.3.0'
+    // lombok
+    compile 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
